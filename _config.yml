@@ -1,1 +1,8 @@
-theme: jekyll-theme-cayman
+domain: igorsobreira.github.io
+url: https://igorsobreira.github.io
+exclude:
+ - README.md
+ - manager.sh
+ - Gemfile
+ - Gemfile.lock
+ 
