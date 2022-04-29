@@ -7,7 +7,13 @@ description: Thoughts on software development
 show_excerpts: true
 
 exclude:
- - README.md
- - manager.sh
- - Gemfile
- - Gemfile.lock
+  - README.md
+  - manager.sh
+  - Gemfile
+  - Gemfile.lock
+
+plugins:
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-redirect-from
