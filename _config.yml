@@ -1,10 +1,26 @@
 domain: igorsobreira.github.io
 url: https://igorsobreira.github.io
-
 theme: minima
+
 title: Igor Sobreira
+author: Igor Sobreira
+tagline: Thoughts on software development
 description: Thoughts on software development
+
+home_post_limit: 8
 show_excerpts: true
+google_analytics: UA-2201771-2
+
+github_username: igorsobreira
+linkedin_username: igorsobreira
+instagram_username: igor_sobreira
+
+social:
+  name: Igor Sobreira
+  links:
+    - https://www.linkedin.com/in/igorsobreira
+    - https://github.com/igorsobreira
+    - https://www.instagram.com/igor_sobreira
 
 exclude:
   - README.md
@@ -17,3 +33,7 @@ plugins:
 
 whitelist:
   - jekyll-redirect-from
+
+
+# https://jekyllrb.com/docs/configuration/default/
+# https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
