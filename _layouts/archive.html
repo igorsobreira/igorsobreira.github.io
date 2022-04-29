@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="post-content">
+  {% assign grouped_posts = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+
+  {% for year in grouped_posts %}
+    <strong>{{ year.name }}</strong>
+    <ul>
+      {% for post in year.items %}
+        <li>
+          <span class="post-meta">{{ post.date | date: date_format }} » </span>
+          <a href="{{ post.url | relative_url }}"">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+  </div>
+
+</article>
