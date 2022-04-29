@@ -1,8 +1,13 @@
 domain: igorsobreira.github.io
 url: https://igorsobreira.github.io
+
+theme: minima
+title: Igor Sobreira
+description: Thoughts on software development
+show_excerpts: true
+
 exclude:
  - README.md
  - manager.sh
  - Gemfile
  - Gemfile.lock
- 
