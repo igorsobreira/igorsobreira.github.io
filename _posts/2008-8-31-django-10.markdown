@@ -1,0 +1,8 @@
+---
+layout: post
+title: Django 1.0!
+---
+
+A versão <a href="http://www.djangoproject.com/download/">1.0 do Django</a> acaba de sair, veja a notícia do lançamento <a href="http://www.djangoproject.com/weblog/2008/sep/03/1/">aqui</a>.
+
+Se tiver migrando de uma versão mais antiga, ou até mesmo do trunk um pouco desatualizado, veja <a href="http://code.djangoproject.com/wiki/BackwardsIncompatibleChanges">o que quebrou compatibilidade</a>, e aproveite! :-)
