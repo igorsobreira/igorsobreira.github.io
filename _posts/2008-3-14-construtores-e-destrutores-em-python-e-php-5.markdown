@@ -24,7 +24,7 @@ class B(A):
 
 Instanciando a classe B pra ver o que acontece:
 
-{% highlight pycon %}
+{% highlight python %}
 >>> b = B()
 estou na classe A
 {% endhighlight %}
@@ -46,7 +46,7 @@ class B(A):
 
 E o resultado será
 
-{% highlight pycon %}
+{% highlight python %}
 >>> b = B()
 estou na classe B
 {% endhighlight %}
@@ -66,7 +66,7 @@ class B(A):
 
 E o resultado será como esperado
 
-{% highlight pycon %}
+{% highlight python %}
 >>> b = B()
 estou na classe B
 estou na classe A
@@ -128,7 +128,7 @@ class A(object):
 
 Testando...
 
-{% highlight pycon %}
+{% highlight python %}
 >>> a = A()
 nascendo...
 >>> del a

@@ -9,7 +9,7 @@ Uma _weak reference_ não é suficiente para manter o objeto na memória, então
 Isso é interessante pra evitar um alto consumo de memória com objetos muito grandes que não deveriam mais estar vivos. Um problema que pode acontecer usando o padrão de projeto <a href="http://en.wikipedia.org/wiki/Observer_pattern">Observer</a> (<del>mal implementado</del>), por exemplo .
 
 Um exemplo
-{% highlight pycon %}
+{% highlight python %}
 >>> class Foo(object):
 ...   def say_hello(self): print 'say hello'
 ... 
@@ -21,7 +21,7 @@ say hello
 
 `r` é uma referência fraca para o objeto a
 
-{% highlight pycon %}
+{% highlight python %}
 >>> r() is a
 True
 >>> r().say_hello()

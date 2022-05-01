@@ -15,26 +15,26 @@ Internally it creates a new form, and put it inside an iframe, and so on. Well, 
 
 {% highlight javascript %}
 $.ajaxFileUpload({
-	url : '/url/to/post/',
-	
-	// here you pass a jQuery selector with all your file inputs.
-	// this is the main change I've made, in the original version you had to pass an
-	// ID of you file input
-	fileElements : $('input[type=file]'),
-	
-	// also supports json, xml and script
-	dataType : 'html',
-    
-	success : function(response) { 
-	    alert('hey, it worked')
-	},
-	error : function(xhr, status, error) { 
-	    alert("you've got a problem here")
-	},
-	
-	// here you pass an object with all extra data you want to send.
-	// it didn't existed in the original version
-	extraData : {foo: 'bar'}
+    url : '/url/to/post/',
+
+    // here you pass a jQuery selector with all your file inputs.
+    // this is the main change I've made, in the original version you had to pass an
+    // ID of you file input
+    fileElements : $('input[type=file]'),
+
+    // also supports json, xml and script
+    dataType : 'html',
+
+    success : function(response) {
+        alert('hey, it worked')
+    },
+    error : function(xhr, status, error) {
+        alert("you've got a problem here")
+    },
+
+    // here you pass an object with all extra data you want to send.
+    // it didn't existed in the original version
+    extraData : {foo: 'bar'}
 });
 {% endhighlight %}
 

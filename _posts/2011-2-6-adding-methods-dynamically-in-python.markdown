@@ -7,47 +7,53 @@ Given the dynamic nature of Python you can do many things in runtime, like add m
 
 Here is the simplest way, adding a method to and object:
 
-    class Person(object):
-        pass
+{% highlight python %}
+class Person(object):
+    pass
 
-    def play():
-        print "i'm playing!"
+def play():
+    print "i'm playing!"
 
-    p = Person()
-    p.play = play
-    p.play()
+p = Person()
+p.play = play
+p.play()
+{% endhighlight %}
 
 note that `play` is just a function, it doesn't receive self. There is no way to `p` knows that it's a method. If you need `self`, you must create a method and then bind to the object:
 
-    from types import MethodType
+{% highlight python %}
+from types import MethodType
 
-    class Person(object):
-        def __init__(self, name):
-            self.name = name
+class Person(object):
+    def __init__(self, name):
+        self.name = name
 
-    def play(self):
-        print "%s is playing!" % self.name
+def play(self):
+    print "%s is playing!" % self.name
 
-    p = Person("igor")
-    p.play = MethodType(play, p)
-    p.play()
+p = Person("igor")
+p.play = MethodType(play, p)
+p.play()
+{% endhighlight %}
 
 In these examples, only the `p` instance will have `play` method, other instances of `Person` won't. To accomplish this we need to add the method to the class:
 
-    class Person(object):
-        def __init__(self, name):
-            self.name = name
+{% highlight python %}
+class Person(object):
+    def __init__(self, name):
+        self.name = name
 
-    def play(self):
-        print "%s is playing!" % self.name
+def play(self):
+    print "%s is playing!" % self.name
 
-    Person.play = play
+Person.play = play
 
-    p1 = Person("igor")
-    p1.play()
+p1 = Person("igor")
+p1.play()
 
-    p2 = Person("joh")
-    p2.play()
+p2 = Person("joh")
+p2.play()
+{% endhighlight %}
 
 note that we don't need to create a method with `types.MethodType` here, because all functions in the body of a class will become methods and receive `self`, unless you explicit say it's a `classmethod` or `staticmethod`.
 
@@ -55,17 +61,19 @@ note that we don't need to create a method with `types.MethodType` here, because
 
 Python doesn't allow to add methods to built-in types, actually to any type defined in C. The unique way around this is to subclass the type, here is an example:
 
-    class UpperList(list):
-        pass
+{% highlight python %}
+class UpperList(list):
+    pass
 
-    def to_upper(self):
-        for index, item in enumerate(self):
-            self[index] = item.upper()
+def to_upper(self):
+    for index, item in enumerate(self):
+        self[index] = item.upper()
 
-    UpperList.to_upper = to_upper
+UpperList.to_upper = to_upper
 
-    l = UpperList(['i','g','o','r'])
-    l.to_upper()
-    print l
+l = UpperList(['i','g','o','r'])
+l.to_upper()
+print l
+{% endhighlight %}
 
 <a href="http://codeblog.dhananjaynene.com/2010/01/dynamically-adding-methods-with-metaprogramming-ruby-and-python/">Here is a nice comparison on dynamically adding methods in Python and Ruby.</a>

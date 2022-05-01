@@ -9,46 +9,54 @@ One suggestion I gave was to use a dictionary instead of a class which had no me
 
 I'll stick with this example because it's real code, even if it's purpose is not 100% clear:
 
-    def create_button_link(matchobject, line):
-        button_link = matchobject.groupdict()
-        button_link.update({
-            'name': matchobject.group(0),
-            'size': int(button_link['size']),
-            'colors': button_link['colors'][1:].split("."),
-            'line': line
-        })
-        return button_link
+{% highlight python %}
+def create_button_link(matchobject, line):
+    button_link = matchobject.groupdict()
+    button_link.update({
+        'name': matchobject.group(0),
+        'size': int(button_link['size']),
+        'colors': button_link['colors'][1:].split("."),
+        'line': line
+    })
+    return button_link
+{% endhighlight %}
 
 this function returns a dictionary with many properties of a button, ok. But now I need to increase its size, I could write a function like:
 
-    def increase_button_link_size(button_link, pixels):
-        button_link['size'] += pixels
-        return button_link
+{% highlight python %}
+def increase_button_link_size(button_link, pixels):
+    button_link['size'] += pixels
+    return button_link
+{% endhighlight %}
 
 At some point you may want to change the design and make a `ButtonLink` class, maybe because you need a much more complex model and OO could help. Anyway, here is how the class could be implemented:
 
-    class ButtonLink(object):
-        def __init__(self, matchobject, line):
-        self.__dict__ = matchobject.groupdict()
-        self.name = matchobject.group(0)
-        self.size = int(self.size)
-        self.colors = self.colors[1:].split(".")
-        self.line = line
-        
-        def increase(self, pixels):
-            self.size += pixels
+{% highlight python %}
+class ButtonLink(object):
+    def __init__(self, matchobject, line):
+    self.__dict__ = matchobject.groupdict()
+    self.name = matchobject.group(0)
+    self.size = int(self.size)
+    self.colors = self.colors[1:].split(".")
+    self.line = line
+
+    def increase(self, pixels):
+        self.size += pixels
+{% endhighlight %}
 
 the problem now is that `button_link`s are being used as dictionaries all over the place, like `button_link['size']`. And even worse, this could be a public API and you may not have access to the clients using it. In this case we could simulate the dict api implementing `__getitem__`:
 
-    import warnings
+{% highlight python %}
+import warnings
 
-    class ButtonLink(object):
-        # ... same as above
-        
-        def __getitem__(self, item):
-            warnings.warn("Dict-like access is deprecated, please use `.{0}`"
-                        .format(item), DeprecationWarning)
-            return getattr(self, item)
+class ButtonLink(object):
+    # ... same as above
+
+    def __getitem__(self, item):
+        warnings.warn("Dict-like access is deprecated, please use `.{0}`"
+                    .format(item), DeprecationWarning)
+        return getattr(self, item)
+{% endhighlight %}
 
 Now you can use `button_link.size` and `button_link['size']`. And I also added a deprecation warning to notify the users that they should use the object API from now on.
 And you should also modify the functions above to create and manipulate the object instead of the dictionary, also raising warnings if you want.

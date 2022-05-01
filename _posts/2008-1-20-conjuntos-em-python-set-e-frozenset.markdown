@@ -10,7 +10,7 @@ Uma coisa que eu precisei fazer ontem foi retirar dados repedidos de uma lista, 
 A diferença entre <b>set</b> e <b>frozenset</b>, é que o primeiro é mutável, já o segunto não.
 Criando um conjunto...
 
-{% highlight pycon %}
+{% highlight python %}
 >>> conjunto1 = set('12345')
 >>> conjunto1
 set(['1', '3', '2', '5', '4'])
@@ -19,7 +19,7 @@ set(['1', '3', '2', '5', '4'])
 
 Veja que é passado um tipo iterável para o set(nessa caso uma string), onde cada elemento vai ser um elemento do conjunto.
  
-{% highlight pycon %}
+{% highlight python %}
 >>> conjunto2 = set([4,4,7,7,8,9])
 >>> conjunto2
 set([8, 9, 4, 7])
@@ -32,7 +32,7 @@ Mas vamos a algumas operações entre conjuntos.
 
 **Está contido e contém**
 
-{% highlight pycon %}
+{% highlight python %}
 >>> conjunto1.issubset(conjunto2)
 False
 >>> conjunto1.issubset(set('123456789'))
@@ -42,7 +42,7 @@ True
 
 Também podemos usar os operadores
 
-{% highlight pycon %}
+{% highlight python %}
 >>> conjunto1 <= set('123456789')
 True
 >>> set('123456789') >= conjunto1
@@ -51,7 +51,7 @@ True
 
 **União**
 
-{% highlight pycon %}
+{% highlight python %}
 >>> conjunto1.union(conjunto2)
 set([4, 7, 8, 9, '1', '3', '2', '5', '4'])
 >>> conjunto1 | conjunto2
@@ -60,7 +60,7 @@ set([4, 7, 8, 9, '1', '3', '2', '5', '4'])
 
 **Interseção**
 
-{% highlight pycon %}
+{% highlight python %}
 >>> set('123').intersection(set('345'))
 set(['3'])
 >>> set('123') & set('345')
@@ -69,7 +69,7 @@ set(['3'])
 
 **Diferença**
 
-{% highlight pycon %}
+{% highlight python %}
 >>> set('1234').difference(set('3'))
 set(['1', '2', '4'])
 >>> 
@@ -80,7 +80,7 @@ set(['1', '2'])
 
 Operações entre sets e frozensets são permitidas, mas veja que a ordem em que eles aparecem importa
 
-{% highlight pycon %}
+{% highlight python %}
 >>> set('234') | frozenset('45')
 set(['3', '2', '5', '4'])
 >>> frozenset('23') | set('567')
@@ -89,7 +89,7 @@ frozenset(['3', '2', '5', '7', '6'])
 
 Outra coisa importante, é que podemos passar iteráveis tanto na criação do set como nas operações usando os métodos. Mas as operações usando os operadores devem ser obrigatoriamente entre sets:
 
-{% highlight pycon %}
+{% highlight python %}
 >>> set('234').union([5,6])
 set(['3', '2', '4', 6, 5])
 >>> 
@@ -102,7 +102,7 @@ TypeError: unsupported operand type(s) for |: 'set' and 'list'
 
 Os sets, por serem mutáveis, também possuem métodos que adicionar e remover novos elementos. Como os frozensets são imutáveis, não possuem esse métodos
 
-{% highlight pycon %}
+{% highlight python %}
 >>> conjunto1 = set(['a','b','c','d'])
 >>> conjunto1
 set(['a', 'c', 'b', 'd'])
@@ -116,7 +116,7 @@ O `conjunto.update(outro_conjunto)`, atualiza `conjunto` adicionando os elemento
 
 O exemplo que eu citei no começo, de retirar dados repetidos de uma lista poderia ter sido feito assim:
 
-{% highlight pycon %}
+{% highlight python %}
 >>> numeros = [2,5,3,2,1,6,3,5,2,2]
 >>> list( set(numeros) )
 [1, 2, 3, 5, 6]

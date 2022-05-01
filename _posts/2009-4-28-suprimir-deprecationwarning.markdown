@@ -5,7 +5,7 @@ title: Suprimir DeprecationWarning
 
 Algumas funcionalidades estão depreciadas no Python 2.6, e como alguns módulos externos ainda não estão atualizados, DeprecationWarnings são lançados. O <a href="http://sourceforge.net/projects/mysql-python">MySQLdb</a>, por exemplo, lança o:
 
-{% highlight pycon %}
+{% highlight python %}
 DeprecationWarning: the sets module is deprecated
 {% endhighlight %}
 

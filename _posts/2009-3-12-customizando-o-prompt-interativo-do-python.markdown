@@ -21,7 +21,7 @@ Depois é só setar a variável de ambiente apontando pra ele
 Para esse export ser executado sempre que a shell do seu usuário iniciar, no OS X pode adicionar no arquivo `~/.profile`. No linux, `~/.bash_profile`.
 
 Agora é só testar:
-{% highlight pycon %}
+{% highlight python %}
 >>> import sys
 >>> sys.<tab><tab>
 ...
