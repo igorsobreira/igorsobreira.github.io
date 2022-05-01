@@ -33,8 +33,6 @@ Visão geral sobre Python, onde e como usá-la. No III [Ensol](http://ensol.org.
 ## Desenvolvimento web ágil com Django
 Palestra no [II Encontro Comunicação Digital](http://encontro.comunicacaodigital.org/) no dia 29 de Maio de 2008.
 
-[Código fonte](http://arquivos.igorsobreira.com/django/apresentacoes/django_IIECD_pycredit.tar.gz) do exemplo apresentado.
-
 <iframe src="/assets/docs/Desenvolvimento-web-agil-com-Django.pdf" width="100%" height="600px"></iframe>
 
 
