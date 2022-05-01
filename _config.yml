@@ -19,6 +19,7 @@ google_analytics: UA-2201771-2
 github_username: igorsobreira
 linkedin_username: igorsobreira
 instagram_username: igor_sobreira
+rss: rss
 
 social:
   name: Igor Sobreira
@@ -29,6 +30,9 @@ social:
 
 disqus:
   shortname: igorsobreira
+
+feed:
+  path: /atom.xml
 
 exclude:
   - README.md
