@@ -22,6 +22,9 @@ social:
     - https://github.com/igorsobreira
     - https://www.instagram.com/igor_sobreira
 
+disqus:
+  shortname: igorsobreira
+
 exclude:
   - README.md
   - manager.sh
