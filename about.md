@@ -4,5 +4,12 @@ title: About
 permalink: /about/
 ---
 
- - [https://github.com/igorsobreira](https://github.com/igorsobreira)
- - [https://linkedin.com/in/igorsobreira](https://linkedin.com/in/igorsobreira)
+Contact me by email at <b>igor</b> @ <i>this domain</i>.
+
+Or find me on social networks
+
+<ul>
+{% for link in site.social.links %}
+<li><a href="{{ link }}">{{ link }}</a></li>
+{% endfor %}
+</ul>
