@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 require 'minitest/autorun'
 require 'faraday'
 require 'nokogiri'
 
-
+# Tests for the website
 class Website < Minitest::Test
-
-  DOMAIN = 'https://igorsobreira.github.io'    # TODO: read from _config.yml
+  DOMAIN = 'https://igorsobreira.github.io'
 
   def setup
     @http = Faraday.new(
       url: DOMAIN,
-      headers: {'User-Agent': 'igorsobreira.com test'}
+      headers: { 'User-Agent': 'igorsobreira.com test' }
     )
   end
 
@@ -34,9 +35,9 @@ class Website < Minitest::Test
 
   def test_menu
     assert_menu '/', [
-      {'About'=>'/about.html'},
-      {'Talks'=>'/talks.html'},
-      {'Archive'=>'/archive.html'}
+      { 'About' => '/about.html' },
+      { 'Talks' => '/talks.html' },
+      { 'Archive' => '/archive.html' }
     ]
   end
 
@@ -80,12 +81,12 @@ class Website < Minitest::Test
   end
 
   def assert_response_status(resp, status)
-    assert_equal status, resp.status, "Expected status 200 on #{resp.env.url.to_s} but got #{resp.status}"
+    assert_equal status, resp.status, "Expected status 200 on #{resp.env.url} but got #{resp.status}"
   end
 
   # Assert response body contain text snippet
   def assert_response_snippet(resp, snippet)
-    assert_includes resp.body, snippet, "Expected #{resp.env.url.to_s} body to contain #{snippet.inspect}"
+    assert_includes resp.body, snippet, "Expected #{resp.env.url} body to contain #{snippet.inspect}"
   end
 
   # Assert the presence of a <meta http-equiv="refresh"> tag, where `target` is the URL
@@ -94,10 +95,10 @@ class Website < Minitest::Test
     html = Nokogiri::HTML.parse(resp.body)
 
     meta = html.xpath('//meta[@http-equiv="refresh"]').first
-    refute_nil meta, "No <meta http-equiv=\"refresh\"> found in #{resp.env.url.to_s}"
+    refute_nil meta, "No <meta http-equiv=\"refresh\"> found in #{resp.env.url}"
 
-    assert_equal "content", meta.attributes["content"].name
-    assert_equal "0; url=#{target}", meta.attributes["content"].value
+    assert_equal 'content', meta.attributes['content'].name
+    assert_equal "0; url=#{target}", meta.attributes['content'].value
   end
 
   def assert_response_nav_links(resp, items)
@@ -106,12 +107,11 @@ class Website < Minitest::Test
 
     found = []
     links.each do |a|
-      found << {a.text => a.attributes['href'].value}
+      found << { a.text => a.attributes['href'].value }
     end
 
     assert_equal items, found
   end
-
 
   def get_url(path)
     DOMAIN + path
