@@ -1,6 +1,8 @@
 ---
 layout: page
 title: About
+redirect_from:
+  - /about/
 ---
 
 Contact me by email at <b>igor</b> @ <i>this domain</i>.
