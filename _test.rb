@@ -15,19 +15,21 @@ class Website < Minitest::Test
     )
   end
 
-  def test_pages
-    # .html
+  def test_urls_html_extension
     assert_content '/index.html', 'Igor Sobreira', 'View all posts'
     assert_content '/archive.html', 'Archive'
     assert_content '/talks.html', 'Talks'
     assert_content '/about.html', 'About'
+  end
 
-    # no extension
+  def test_urls_no_extension
     assert_content '/', 'Igor Sobreira', 'View all posts'
     assert_content '/archive', 'Archive'
     assert_content '/talks', 'Talks'
     assert_content '/about', 'About'
+  end
 
+  def test_metadata_urls
     assert_content '/robots.txt', 'User-agent: *'
     assert_content '/atom.xml', 'xmlns="http://www.w3.org/2005/Atom"'
     assert_content '/sitemap.xml', 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -56,6 +58,10 @@ class Website < Minitest::Test
   end
 
   private
+
+  def get_url(path)
+    @base_url + path
+  end
 
   # Asserts that a given URL has one or more text snippets
   def assert_content(path, *snippets)
@@ -111,9 +117,5 @@ class Website < Minitest::Test
     end
 
     assert_equal items, found
-  end
-
-  def get_url(path)
-    DOMAIN + path
   end
 end
