@@ -7,3 +7,7 @@ Install Jekyll:
 run local server
 
     ./manager.sh serve
+
+Run tests
+
+    ./manager.sh test

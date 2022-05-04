@@ -1,7 +1,6 @@
 ---
 layout: page
 title: About
-permalink: /about/
 ---
 
 Contact me by email at <b>igor</b> @ <i>this domain</i>.

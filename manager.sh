@@ -13,6 +13,10 @@ function serve {
     bundle exec jekyll serve
 }
 
+function test {
+    bundle exec ruby _test.rb
+}
+
 
 if [ -z "$1" ]; then
     echo "missing command"

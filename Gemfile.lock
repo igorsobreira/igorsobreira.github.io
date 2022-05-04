@@ -276,10 +276,13 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  faraday (~> 1.10)
   github-pages
   jekyll-feed (~> 0.15.1)
   jekyll-redirect-from (~> 0.16.0)
   jekyll-sitemap (~> 1.4)
+  minitest (~> 5.15)
+  nokogiri (~> 1.13)
   webrick (~> 1.7)
 
 BUNDLED WITH
