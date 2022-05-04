@@ -1,6 +1,8 @@
 ---
 layout: page
 title: Talks
+redirect_from:
+  - /talks/
 ---
 
 **All presentations are in Brazilian Portuguese** 🇧🇷

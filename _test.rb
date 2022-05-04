@@ -21,11 +21,12 @@ class Website < Minitest::Test
     assert_content '/talks.html', 'Talks'
     assert_content '/about.html', 'About'
 
-    # /
+    # no extension
     assert_content '/', 'Igor Sobreira', 'View all posts'
-    # assert_content '/talks/', 'Talks'
-    # assert_content '/archive/', 'Archive'
-    # assert_content '/about/', 'About'
+    assert_content '/archive', 'Archive'
+    assert_content '/talks', 'Talks'
+    assert_content '/about', 'About'
+
     assert_content '/robots.txt', 'User-agent: *'
     assert_content '/atom.xml', 'xmlns="http://www.w3.org/2005/Atom"'
     assert_content '/sitemap.xml', 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
@@ -39,8 +40,18 @@ class Website < Minitest::Test
     ]
   end
 
-  def test_redirects
+  def test_redirect_renamed_urls
     assert_github_redirect '/posts.html', '/archive.html'
+  end
+
+  def test_redirect_trailing_slash
+    # In Jekyll 2, any URL constructed from the permalink: field had a
+    # trailing slash (/) added to it automatically. Jekyll 3 no longer
+    # adds a trailing slash automatically to permalink: URLs. This can
+    # potentially result in old links to pages returning a 404 error.
+    assert_github_redirect '/about/', '/about.html'
+    assert_github_redirect '/archive/', '/archive.html'
+    assert_github_redirect '/talks/', '/talks.html'
   end
 
   private
@@ -83,7 +94,7 @@ class Website < Minitest::Test
     html = Nokogiri::HTML.parse(resp.body)
 
     meta = html.xpath('//meta[@http-equiv="refresh"]').first
-    refute_nil meta, "No <meta http-equiv=\"refresh\"> found"
+    refute_nil meta, "No <meta http-equiv=\"refresh\"> found in #{resp.env.url.to_s}"
 
     assert_equal "content", meta.attributes["content"].name
     assert_equal "0; url=#{target}", meta.attributes["content"].value
