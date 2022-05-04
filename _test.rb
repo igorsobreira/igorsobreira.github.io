@@ -3,14 +3,14 @@
 require 'minitest/autorun'
 require 'faraday'
 require 'nokogiri'
+require 'yaml'
 
 # Tests for the website
 class Website < Minitest::Test
-  DOMAIN = 'https://igorsobreira.github.io'
-
   def setup
+    @base_url = YAML.load_file('_config.yml')['url']
     @http = Faraday.new(
-      url: DOMAIN,
+      url: @base_url,
       headers: { 'User-Agent': 'igorsobreira.com test' }
     )
   end
